@@ -3,6 +3,22 @@ $(function () {
     $('[data-toggle="tooltip"]').tooltip()
 })
 
+const proImgList = [];
+const funImgList = [];
+
+document.getElementById('cohort').addEventListener('mouseover', (event) => {
+  if (event.target.id.includes('img')) {
+    const indexer = parseInt(event.target.id.replace('img', ''), 10);
+    event.target.src = funImgList[indexer - 1];
+  }
+});
+
+document.getElementById('cohort').addEventListener('mouseout', (event) => {
+  if (event.target.id.includes('img')) {
+    const indexer = parseInt(event.target.id.replace('img', ''), 10);
+    event.target.src = proImgList[indexer - 1];
+  }
+});
 
 $.ajax({
   url: "data/cohort.json"
@@ -46,12 +62,13 @@ function cohortMembers(list) {
     studentContact += `</div>`
 
     let studentInfo = `<div class="col-md-3 cohortMems">
-          <img class="card-img-top" src="${item.proImg}" alt="${item.firstName} ${item.lastName}" data-toggle="modal" data-target="#cohortMember${item.id}" style="cursor:pointer;">
-          <div class="card-body">
+          <img class="card-img-top" src="${item.proImg}" alt="${item.firstName} ${item.lastName}"
+            data-toggle="modal" data-target="#cohortMember${item.id}" style="cursor:pointer;" id='img${item.id}'>
+          <div class="card-body studentCardBody">
             <h4 class="card-title title-font">${item.firstName} ${item.lastName}</h4>`
     //if student didn't provide a reelthemin quote then nothing is displayed
     if (item.reelThemIn != null) {
-      studentInfo += `<p class="card-text">${item.reelThemIn}</p>`
+      studentInfo += `<div class='studentCardTextContainer'><p class="card-text">${item.reelThemIn}</p></div>`
     }
     studentInfo += studentContact
 
@@ -101,7 +118,8 @@ function cohortMembers(list) {
         `
     }
     document.getElementById("cohort").innerHTML += studentInfo;
-
+    proImgList.push(item.proImg);
+    funImgList.push(item.funImg);
   });
 };
 //checks to see if url string is empty, if not, creates specified image

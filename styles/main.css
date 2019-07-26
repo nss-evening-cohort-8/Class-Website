@@ -2,6 +2,17 @@ p {
   font-family: 'Barlow', sans-serif;
 }
 
+.studentCardTextContainer {
+    height: 160px;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+}
+
+.magic8 {
+    margin-left: 30px;
+}
+
 html, body {
     max-width: 100%;
     overflow-x: hidden;
