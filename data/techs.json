@@ -96,11 +96,6 @@
       "link": "https://dapper-tutorial.net/"
     },
     {
-      "name": "Axios",
-      "image": "",
-      "link": "https://github.com/axios/axios"
-    },
-    {
       "name": "MS Identity Framework",
       "image": "images/techs/mslogo.jpg",
       "link": "https://docs.microsoft.com/en-us/aspnet/identity/overview/getting-started/introduction-to-aspnet-identity"
